@@ -1,0 +1,37 @@
+﻿@using _4Tune.ViewModels;
+@using _4Tune.Models;
+@model OverzichtAutosViewModel
+
+@{
+    ViewData["Title"] = "Overzicht auto's";
+}
+
+<h1 class="pt-4 display-4">Overzicht auto's</h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @if (Model.Autos.Any())
+    {
+
+        var groupedAutos = Model.Autos.GroupBy(auto => auto.Merk);
+
+        foreach (var merkGroup in groupedAutos)
+        {
+            <h2>@merkGroup.Key</h2>
+            foreach (var auto in merkGroup)
+            {
+                <div class="card bg-warning auto-kaart">
+                    <img src="~/images/@auto.Afbeelding" class="card-img-top" alt="Card image cap">
+                    <div class="card-body auto-body">
+                        <h5 class="card-title">@auto.MerkModel</h5>
+                        <p class="card-text">@auto.PrijsString</p>
+                        <a asp-controller="Auto" asp-action="Detail" asp-route-id="@auto.Id" class="btn btn-dark">Bekijk details</a>
+                    </div>
+                </div>
+            }
+        }
+    }
+    else
+    {
+        <div>Momenteel zijn er geen auto's te koop.</div>
+    }
+</div>
