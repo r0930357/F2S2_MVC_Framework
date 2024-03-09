@@ -1,0 +1,29 @@
+﻿@using Owledge.ViewModels
+@model OpleidingskeuzeViewModel
+
+<div class="row">
+    <div class="col-md-4">
+        <h1 class="display-4  mt-3">Opleidingskeuze</h1>
+        <form asp-controller="Inschrijving" asp-action="Opleidingskeuze" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Opleiding" class="control-label display-6 mt-3 mb-2"></label>
+
+            </div>
+            <h2 class="display-6  mt-3">Optionele keuzevakken</h2>
+            <div class="form-group">
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Ga verder" class="btn btn-primary"/>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

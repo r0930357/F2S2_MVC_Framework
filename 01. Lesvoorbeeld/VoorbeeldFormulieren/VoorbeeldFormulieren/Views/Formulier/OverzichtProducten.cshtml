@@ -1,0 +1,35 @@
+﻿@model OverzichtProductenViewModel
+
+@{
+    ViewData["Title"] = "Overzicht producten";
+}
+<form asp-controller="Formulier" asp-action="FilterProducten">
+    <div class="form-actions no-color">
+        <p>
+            Zoek op productnaam:
+            <input asp-for="Zoekterm" />
+            <input type="submit" value="Zoeken"/>
+            <a asp-controller="Formulier" asp-action="OverzichtProducten">Terug naar volledige lijst</a>
+        </p>
+    </div>
+</form>
+<h3>Overzicht producten</h3>
+<table>
+    <thead>
+        <tr>
+            <th class="col-md-4">@Html.DisplayNameFor(modelItem => Model.Producten[0].ProductID)</th>
+            <th class="col-md-4">@Html.DisplayNameFor(modelItem => Model.Producten[0].Naam)</th>
+            <th class="col-md-4">@Html.DisplayNameFor(modelItem => Model.Producten[0].Prijs)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Producten)
+        {
+            <tr>
+                <td class="col-md-4">@Html.DisplayFor(modelItem => product.ProductID)</td>
+                <td class="col-md-4">@Html.DisplayFor(modelItem => product.Naam)</td>
+                <td class="col-md-4">€ @Html.DisplayFor(modelItem => product.Prijs)</td>
+            </tr>
+        }
+    </tbody>
+</table> 

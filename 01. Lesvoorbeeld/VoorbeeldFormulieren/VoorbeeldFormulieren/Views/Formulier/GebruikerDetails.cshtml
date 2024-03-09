@@ -1,0 +1,19 @@
+﻿@model GebruikerDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details gebruiker"; 
+}
+
+<h2> Details van @Model.gebruiker.Voornaam @Model.gebruiker.Familienaam</h2>
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" 
+    src="~/Images/@Model.gebruiker.Afbeelding" 
+    alt="Afbeelding @Model.gebruiker.Voornaam @Model.gebruiker.Familienaam">
+  <div class="card-body">
+    <h5 class="card-title">@Model.gebruiker.Voornaam @Model.gebruiker.Familienaam</h5>
+        <p class="card-text">Geboortedatum: @Html.DisplayFor(x => x.gebruiker.Geboortedatum)</p>
+        <p class="card-text">Geslacht: @Html.DisplayFor(x => x.gebruiker.Geslacht)</p>
+    <a asp-controller="Formulier" asp-action="Registreren">Terug naar registreren</a>
+  </div>
+</div>
